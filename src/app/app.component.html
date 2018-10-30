@@ -1,6 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<app-filters></app-filters>
-<app-dashboard></app-dashboard>
+<div class="dashboard">
+  <app-filters class="dashboard__filters"></app-filters>
+  <app-preset-filters class="dashboard__sidebar"></app-preset-filters>
+  <app-tasks class="dashboard__tasks"></app-tasks>
+</div>
 <button (click)="increment()">Increment</button>
 <div>Current Count: {{ count$ | async }}</div>
 <button (click)="decrement()">Decrement</button>

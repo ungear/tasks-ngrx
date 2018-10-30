@@ -1,0 +1,14 @@
+$border: 1px solid #ccc;
+
+.task-list {
+  &__item {
+    border-bottom: $border;
+  }
+}
+
+.task {
+  display: flex;
+  &__segment {
+    flex: 1;
+  }
+}

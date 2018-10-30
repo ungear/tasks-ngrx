@@ -1,0 +1,14 @@
+.dashboard {
+  display: grid;
+  grid-template-areas: "s f" "s t";
+  grid-template-columns: 150px 1fr;
+  &__filtes {
+    grid-area: f;
+  }
+  &__sidebar {
+    grid-area: s;
+  }
+  &__tasks {
+    grid-area: t;
+  }
+}
