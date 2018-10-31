@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Store, select } from "@ngrx/store";
+import * as FilterActions from "../store/filter.action";
+import { AppState } from "../store/store";
 
 @Component({
   selector: "app-filters",
@@ -11,9 +14,11 @@ export class FiltersComponent implements OnInit {
     isActive: false
   };
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {}
 
-  onFilterFormSubmit() {}
+  onFilterFormSubmit() {
+    this.store.dispatch(new FilterActions.Apply(this.filter));
+  }
 }

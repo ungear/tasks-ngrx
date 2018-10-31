@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Store, select } from "@ngrx/store";
+import { AppState } from "../store/store";
+import { Observable } from "rxjs";
 
 const MOCK_TASKS: Task[] = [
   {
@@ -28,7 +31,10 @@ const MOCK_TASKS: Task[] = [
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = MOCK_TASKS;
-  constructor() {}
+  filter$: Observable<any>;
+  constructor(private store: Store<AppState>) {
+    store.pipe(select("filter")).subscribe(d => console.log(d));
+  }
 
   ngOnInit() {}
 }

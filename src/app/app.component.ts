@@ -2,10 +2,7 @@ import { Component } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { INCREMENT, DECREMENT, RESET } from "./store/counter";
-
-interface AppState {
-  count: number;
-}
+import { AppState } from "../app/store/store";
 
 @Component({
   selector: "app-root",
