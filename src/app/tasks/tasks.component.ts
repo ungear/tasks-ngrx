@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { AppState } from "../store/store";
 import { Observable } from "rxjs";
+import { filter } from "rxjs/operators";
 
 const MOCK_TASKS: Task[] = [
   {
@@ -33,7 +34,11 @@ export class TasksComponent implements OnInit {
   tasks: Task[] = MOCK_TASKS;
   filter$: Observable<any>;
   constructor(private store: Store<AppState>) {
-    store.pipe(select("filter")).subscribe(d => console.log(d));
+    store.pipe(select("filter")).subscribe(filter => {
+      this.tasks = filter
+        ? MOCK_TASKS.filter(t => t.taskName.includes(filter.taskName))
+        : MOCK_TASKS;
+    });
   }
 
   ngOnInit() {}
