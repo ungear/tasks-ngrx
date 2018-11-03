@@ -36,16 +36,18 @@ export class TasksComponent implements OnInit {
   constructor(private store: Store<AppState>) {
     this.tasks$ = store.pipe(
       select("filter"),
-      map(
-        taskFilter =>
-          taskFilter
-            ? MOCK_TASKS.filter(t => t.taskName.includes(taskFilter.taskName))
-            : MOCK_TASKS
-      )
+      map(filterTasksFactory(MOCK_TASKS))
     );
   }
 
   ngOnInit() {}
+}
+
+function filterTasksFactory(tasks) {
+  return taskFilter =>
+    taskFilter
+      ? tasks.filter(t => t.taskName.includes(taskFilter.taskName))
+      : tasks;
 }
 
 type Task = {
