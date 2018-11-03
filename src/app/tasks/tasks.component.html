@@ -1,5 +1,5 @@
 <section class="task-list">
-  <div class="task-list__item task" *ngFor="let t of tasks">
+  <div class="task-list__item task" *ngFor="let t of tasks$ | async">
     <div class="task__segment">{{t.projectName}}</div>
     <div class="task__segment">{{t.taskName}}</div>
     <div class="task__segment">{{t.description}}</div>

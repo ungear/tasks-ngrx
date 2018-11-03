@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { AppState } from "../store/store";
 import { Observable } from "rxjs";
-import { filter } from "rxjs/operators";
+import { map } from "rxjs/operators";
 
 const MOCK_TASKS: Task[] = [
   {
@@ -31,14 +31,18 @@ const MOCK_TASKS: Task[] = [
   styleUrls: ["./tasks.component.scss"]
 })
 export class TasksComponent implements OnInit {
-  tasks: Task[] = MOCK_TASKS;
+  tasks$: Observable<Task[]>;
   filter$: Observable<any>;
   constructor(private store: Store<AppState>) {
-    store.pipe(select("filter")).subscribe(filter => {
-      this.tasks = filter
-        ? MOCK_TASKS.filter(t => t.taskName.includes(filter.taskName))
-        : MOCK_TASKS;
-    });
+    this.tasks$ = store.pipe(
+      select("filter"),
+      map(
+        taskFilter =>
+          taskFilter
+            ? MOCK_TASKS.filter(t => t.taskName.includes(taskFilter.taskName))
+            : MOCK_TASKS
+      )
+    );
   }
 
   ngOnInit() {}
