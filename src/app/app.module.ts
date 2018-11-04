@@ -6,7 +6,6 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { FiltersComponent } from "./filters/filters.component";
 
 import { StoreModule } from "@ngrx/store";
-import { counterReducer } from "./store/counter";
 import { filterReducer } from "./store/filter.reducer";
 import { TasksComponent } from "./tasks/tasks.component";
 import { PresetFiltersComponent } from "./preset-filters/preset-filters.component";
@@ -21,7 +20,7 @@ import { PresetFiltersComponent } from "./preset-filters/preset-filters.componen
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ count: counterReducer, filter: filterReducer }),
+    StoreModule.forRoot({ filter: filterReducer }),
     FormsModule
   ],
   providers: [],
