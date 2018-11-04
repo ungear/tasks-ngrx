@@ -44,10 +44,14 @@ export class TasksComponent implements OnInit {
   ngOnInit() {}
 }
 
-function filterTasksFactory(tasks) {
+function filterTasksFactory(tasks: Task[]) {
   return (taskFilter: TaskFilter) =>
     taskFilter
-      ? tasks.filter(t => t.taskName.includes(taskFilter.taskName))
+      ? tasks.filter(
+          t =>
+            t.taskName.includes(taskFilter.taskName) &&
+            t.isActive === taskFilter.isActive
+        )
       : tasks;
 }
 
