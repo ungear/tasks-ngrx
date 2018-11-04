@@ -2,4 +2,5 @@
   <input type="text" [(ngModel)]="filter.taskName" name="taskname" placeholder="Task name filter">
   <input type="checkbox" [(ngModel)]="filter.isActive" name="isactive">
   <button>Filter</button>
+  <button type="button" (click)="onResetClick()">Reset</button>
 </form>

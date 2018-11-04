@@ -12,7 +12,7 @@ export function filterReducer(
     }
 
     case FilterActionTypes.reset: {
-      return null; // typed to number
+      return null;
     }
 
     default: {

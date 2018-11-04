@@ -22,4 +22,10 @@ export class FiltersComponent implements OnInit {
   onFilterFormSubmit() {
     this.store.dispatch(new FilterActions.Apply(this.filter));
   }
+
+  onResetClick() {
+    this.filter.taskName = "";
+    this.filter.isActive = false;
+    this.store.dispatch(new FilterActions.Reset());
+  }
 }
