@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+import { TaskFilter } from "src/app/types/taskFilter";
 
 export enum FilterActionTypes {
   apply = "apply filter",
@@ -7,7 +8,7 @@ export enum FilterActionTypes {
 
 export class Apply implements Action {
   readonly type = FilterActionTypes.apply;
-  constructor(public filter: any) {}
+  constructor(public filter: TaskFilter) {}
 }
 
 export class Reset implements Action {

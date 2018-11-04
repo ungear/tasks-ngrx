@@ -3,6 +3,7 @@ import { Store, select } from "@ngrx/store";
 import { AppState } from "../store/store";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { TaskFilter } from "src/app/types/taskFilter";
 
 const MOCK_TASKS: Task[] = [
   {
@@ -44,7 +45,7 @@ export class TasksComponent implements OnInit {
 }
 
 function filterTasksFactory(tasks) {
-  return taskFilter =>
+  return (taskFilter: TaskFilter) =>
     taskFilter
       ? tasks.filter(t => t.taskName.includes(taskFilter.taskName))
       : tasks;

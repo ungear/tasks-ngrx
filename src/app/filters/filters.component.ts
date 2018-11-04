@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import * as FilterActions from "../store/filter.action";
 import { AppState } from "../store/store";
+import { TaskFilter } from "src/app/types/taskFilter";
 
 @Component({
   selector: "app-filters",
@@ -9,7 +10,7 @@ import { AppState } from "../store/store";
   styleUrls: ["./filters.component.scss"]
 })
 export class FiltersComponent implements OnInit {
-  filter = {
+  filter: TaskFilter = {
     taskName: "",
     isActive: false
   };
