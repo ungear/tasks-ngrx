@@ -1,0 +1,9 @@
+.head {
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.f-list {
+  &__item {
+    cursor: pointer;
+  }
+}

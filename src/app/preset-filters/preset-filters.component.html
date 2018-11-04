@@ -1,3 +1,4 @@
-<p>
-  preset-filters works!
-</p>
+<div class="head">Preset filters</div>
+<section class="f-list">
+  <div class="f-list__item" *ngFor="let f of namedFilters" (click)="onItemClick(f)">{{f.name}}</div>
+</section>
