@@ -9,6 +9,11 @@ import { StoreModule } from "@ngrx/store";
 import { filterReducer } from "./store/filter.reducer";
 import { TasksComponent } from "./tasks/tasks.component";
 import { PresetFiltersComponent } from "./preset-filters/preset-filters.component";
+import { AppState } from "./store/store";
+
+const INITIAL_STATE: AppState = {
+  filter: null
+};
 
 @NgModule({
   declarations: [
@@ -20,7 +25,10 @@ import { PresetFiltersComponent } from "./preset-filters/preset-filters.componen
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ filter: filterReducer }),
+    StoreModule.forRoot(
+      { filter: filterReducer },
+      { initialState: INITIAL_STATE }
+    ),
     FormsModule
   ],
   providers: [],
